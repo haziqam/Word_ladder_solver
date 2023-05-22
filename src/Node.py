@@ -7,26 +7,14 @@ class Node:
 
     def get_path_from_root(self):
         current = self
-        path = deque()
-        while (current != None):
-            path.appendleft(current.word)
+        path = []
+        while current is not None:
+            path.append(current.word)
             current = current.predecessor
-        return list(path)
+        path.reverse()
+        return path
 
-
-if __name__ == "__main__":
-    a = Node("heal", None)
-
-    b = Node("heap", a)
-
-    c = Node("hear", a)
-
-    d = Node("pear", c)
-
-    e = Node("bear", d)
-
-    f = Node("tear", e)
-
-    print(b.get_path_from_root())
-
-    print(f.get_path_from_root())
+class ExtendedNode(Node):
+    def __init__(self, word, predecessor, distance_from_root):
+        super().__init__(word, predecessor)
+        self.distance_from_root = distance_from_root

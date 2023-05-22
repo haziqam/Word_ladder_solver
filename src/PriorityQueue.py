@@ -8,11 +8,11 @@ class PriorityQueue:
     def is_empty(self):
         return len(self._queue) == 0
 
-    def push(self, item, priority):
+    def enqueue(self, item, priority):
         heapq.heappush(self._queue, (priority, self._index, item))
         self._index += 1
 
-    def pop(self):
-        return heapq.heappop(self._queue)[-1]
+    def dequeue(self):
+        return heapq.heappop(self._queue)[2]
 
 
